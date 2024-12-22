@@ -1,0 +1,134 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    font-family: monospace;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Overlay above reveal */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOut 4.2s forwards;
+  }
+  
+  .line {
+    color: lightgray;
+    white-space: pre;
+    font-size: 20px;
+    line-height: 1.5;
+    animation: changeSymbols 1.5s steps(20) forwards;
+  }
+  
+  /* Define different keyframes for each line to simulate randomness */
+  @keyframes changeSymbols {
+    0% { content: "**** #### **** #### **** #### **** ####"; }
+    5% { content: "%%%% &&&& %%%% &&&& %%%% &&&& %%%% &&&&"; }
+    10% { content: "@@@@ !!!! @@@@ !!!! @@@@ !!!! @@@@ !!!!"; }
+    15% { content: "$$$$ **** $$$$ **** $$$$ **** $$$$ ****"; }
+    20% { content: "%%%% #### %%%% #### %%%% #### %%%% ####"; }
+    25% { content: "&&&& @@@@ &&&& @@@@ &&&& @@@@ &&&& @@@@"; }
+    30% { content: "!!!! $$$$ !!!! $$$$ !!!! $$$$ !!!! $$$$"; }
+    35% { content: "@@@@ &&&& @@@@ &&&& @@@@ &&&& @@@@ &&&&"; }
+    40% { content: "%%%% !!!! %%%% !!!! %%%% !!!! %%%% !!!!"; }
+    45% { content: "$$$$ @@@@ $$$$ @@@@ $$$$ @@@@ $$$$ @@@@"; }
+    50% { content: "#### $$$$ #### $$$$ #### $$$$ #### $$$$"; }
+    55% { content: "%%%% !!!! %%%% !!!! %%%% !!!! %%%% !!!!"; }
+    60% { content: "&&&& #### &&&& #### &&&& #### &&&& ####"; }
+    65% { content: "@@@@ $$$$ @@@@ $$$$ @@@@ $$$$ @@@@ $$$$"; }
+    70% { content: "%%%% &&&& %%%% &&&& %%%% &&&& %%%% &&&&"; }
+    75% { content: "!!!! @@@@ !!!! @@@@ !!!! @@@@ !!!! @@@@"; }
+    80% { content: "$$$$ #### $$$$ #### $$$$ #### $$$$ ####"; }
+    85% { content: "%%%% !!!! %%%% !!!! %%%% !!!! %%%% !!!!"; }
+    90% { content: "&&&& $$$$ &&&& $$$$ &&&& $$$$ &&&& $$$$"; }
+    95% { content: "@@@@ #### @@@@ #### @@@@ #### @@@@ ####"; }
+    100% { content: "                                 "; } /* Clear the line */
+  }
+  
+  /* Apply the animation to each line with staggered delays */
+  .line:nth-child(1)::before { animation: changeSymbols 1.5s steps(20) forwards; }
+  .line:nth-child(2)::before { animation: changeSymbols 1.5s steps(20) forwards; animation-delay: 0.1s; }
+  .line:nth-child(3)::before { animation: changeSymbols 1.5s steps(20) forwards; animation-delay: 0.2s; }
+  .line:nth-child(4)::before { animation: changeSymbols 1.5s steps(20) forwards; animation-delay: 0.3s; }
+  .line:nth-child(5)::before { animation: changeSymbols 1.5s steps(20) forwards; animation-delay: 0.4s; }
+  .line:nth-child(6)::before { animation: changeSymbols 1.5s steps(20) forwards; animation-delay: 0.5s; }
+  .line:nth-child(7)::before { animation: changeSymbols 1.5s steps(20) forwards; animation-delay: 0.6s; }
+  .line:nth-child(8)::before { animation: changeSymbols 1.5s steps(20) forwards; animation-delay: 0.7s; }
+  .line:nth-child(9)::before { animation: changeSymbols 1.5s steps(20) forwards; animation-delay: 0.8s; }
+  .line:nth-child(10)::before { animation: changeSymbols 1.5s steps(20) forwards; animation-delay: 0.9s; }
+  
+  /* Hide the actual text content since we'll use ::before to show symbols */
+  .line::before {
+    content: "**** #### **** #### **** #### **** ####";
+    display: block;
+  }
+  
+  /* Updated fadeOut keyframes */
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      visibility: visible;
+    }
+    95% {
+      opacity: 1;
+      visibility: visible;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden; /* Hides the overlay */
+    }
+  }
+  
+  /* Updated reveal styles with higher z-index */
+  .reveal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 3; /* Higher than overlay's z-index */
+    opacity: 0;
+    animation: revealText 1.5s forwards;
+    animation-delay: 1.5s;
+  }
+  
+  /* Reveal text animation */
+  @keyframes revealText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  /* Optional: Style the links */
+  .reveal .links {
+    margin-top: 20px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    align-items: center;    /* Center links horizontally */
+  }
+  
+  .reveal .links a {
+    color: lightgray; /* Light blue color for visibility */
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+  }
+  
+  .reveal .links a:hover {
+    color: #00FF00; /* Change color on hover */
+  }
+  
