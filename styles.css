@@ -120,6 +120,10 @@ body {
     flex-direction: column; /* Stack links vertically */
     align-items: center;    /* Center links horizontally */
   }
+
+  .reveal .links-small {
+    font-size: 10px;
+  }
   
   .reveal .links a {
     color: lightgray; /* Light blue color for visibility */
